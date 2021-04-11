@@ -19,6 +19,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\tepe.BusTicketBooking.DAL\tepe.BusTicketBooking.DAL.csproj" />
+    <ProjectReference Include="..\tepe.BusTicketBooking.Services\tepe.BusTicketBooking.Services.csproj" />
   </ItemGroup>
 
 </Project>

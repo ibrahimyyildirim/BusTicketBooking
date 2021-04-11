@@ -19,7 +19,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using tepe.BusTicketBooking.Core.Entities;
+using tepe.BusTicketBooking.Core.Interfaces.Repositories;
+using tepe.BusTicketBooking.Core.Interfaces.Services;
 using tepe.BusTicketBooking.DAL;
+using tepe.BusTicketBooking.DAL.Repositories;
+using tepe.BusTicketBooking.Services;
 
 namespace tepe.BusTicketBooking
 {
@@ -71,6 +75,12 @@ namespace tepe.BusTicketBooking
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "tepe.BusTicketBooking", Version = "v1" });
             });
+            services.AddTransient<IRouteService, RouteService>();
+            services.AddTransient<ITicketService, TicketService>();
+            services.AddTransient<IInvoiceService, InvoiceService>();
+            services.AddTransient<IRouteRepository, RouteRepository>();
+            services.AddTransient<ITicketRepository, TicketRepository>();
+            services.AddTransient<IInvoiceRepository, InvoiceRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

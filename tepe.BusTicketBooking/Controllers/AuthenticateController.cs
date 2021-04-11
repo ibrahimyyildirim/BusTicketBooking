@@ -115,7 +115,7 @@ namespace tepe.BusTicketBooking.Controllers
 
             if (await roleManager.RoleExistsAsync(UserRoles.Admin))
             {
-                await userManager.AddToRoleAsync(user, UserRoles.User);
+                await userManager.AddToRoleAsync(user, UserRoles.Admin);
             }
 
             return Ok(new BaseResponse { Status = "Success", Message = "User created successfully!" });

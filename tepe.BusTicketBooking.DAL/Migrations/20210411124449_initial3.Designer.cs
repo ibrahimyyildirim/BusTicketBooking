@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using tepe.BusTicketBooking.DAL;
 
 namespace tepe.BusTicketBooking.DAL.Migrations
 {
     [DbContext(typeof(TepeContext))]
-    partial class TepeContextModelSnapshot : ModelSnapshot
+    [Migration("20210411124449_initial3")]
+    partial class initial3
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -150,110 +152,6 @@ namespace tepe.BusTicketBooking.DAL.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("tepe.BusTicketBooking.Core.Entities.Invoice", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("CustomerId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<DateTime>("Date")
-                        .HasColumnType("datetime2");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
-
-                    b.Property<double>("Price")
-                        .HasColumnType("float");
-
-                    b.Property<int?>("RouteId")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("UpdatedAt")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CustomerId");
-
-                    b.HasIndex("RouteId");
-
-                    b.ToTable("Invoices");
-                });
-
-            modelBuilder.Entity("tepe.BusTicketBooking.Core.Entities.Route", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime>("Date")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Destination")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("Source")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("UpdatedAt")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Routes");
-                });
-
-            modelBuilder.Entity("tepe.BusTicketBooking.Core.Entities.Ticket", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<double>("BasePrice")
-                        .HasColumnType("float");
-
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("CustomerId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("IsSaled")
-                        .HasColumnType("bit");
-
-                    b.Property<int?>("RouteId")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("UpdatedAt")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CustomerId");
-
-                    b.HasIndex("RouteId");
-
-                    b.ToTable("Tickets");
-                });
-
             modelBuilder.Entity("tepe.BusTicketBooking.Core.Entities.User", b =>
                 {
                     b.Property<string>("Id")
@@ -368,41 +266,6 @@ namespace tepe.BusTicketBooking.DAL.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("tepe.BusTicketBooking.Core.Entities.Invoice", b =>
-                {
-                    b.HasOne("tepe.BusTicketBooking.Core.Entities.User", "Customer")
-                        .WithMany()
-                        .HasForeignKey("CustomerId");
-
-                    b.HasOne("tepe.BusTicketBooking.Core.Entities.Route", "Route")
-                        .WithMany()
-                        .HasForeignKey("RouteId");
-
-                    b.Navigation("Customer");
-
-                    b.Navigation("Route");
-                });
-
-            modelBuilder.Entity("tepe.BusTicketBooking.Core.Entities.Ticket", b =>
-                {
-                    b.HasOne("tepe.BusTicketBooking.Core.Entities.User", "Customer")
-                        .WithMany()
-                        .HasForeignKey("CustomerId");
-
-                    b.HasOne("tepe.BusTicketBooking.Core.Entities.Route", "Route")
-                        .WithMany("TicketList")
-                        .HasForeignKey("RouteId");
-
-                    b.Navigation("Customer");
-
-                    b.Navigation("Route");
-                });
-
-            modelBuilder.Entity("tepe.BusTicketBooking.Core.Entities.Route", b =>
-                {
-                    b.Navigation("TicketList");
                 });
 #pragma warning restore 612, 618
         }
