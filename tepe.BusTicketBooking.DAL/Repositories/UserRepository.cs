@@ -16,7 +16,7 @@ namespace tepe.BusTicketBooking.DAL.Repositories
             _contextdb = context;
         }
 
-        public User getUser(int id) {
+        public User getUser(string id) {
             return _contextdb.Users.Find(id);
         }
 

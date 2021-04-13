@@ -9,7 +9,7 @@ namespace tepe.BusTicketBooking.Core.Interfaces.Repositories
 {
     public interface IUserRepository 
     {
-        User getUser(int id);
+        User getUser(string id);
 
     }
 }

@@ -8,7 +8,7 @@ namespace tepe.BusTicketBooking.Core.RequestModels
 {
     public class SellTicketRequestModel
     {
-        public int UserId { get; set; }
+        public string UserId { get; set; }
         public int TicketId { get; set; }
     }
 }
