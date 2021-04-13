@@ -77,6 +77,7 @@ namespace tepe.BusTicketBooking
             });
             services.AddTransient<IRouteService, RouteService>();
             services.AddTransient<ITicketService, TicketService>();
+            services.AddTransient<IUserRepository, UserRepository>();
             services.AddTransient<IInvoiceService, InvoiceService>();
             services.AddTransient<IRouteRepository, RouteRepository>();
             services.AddTransient<ITicketRepository, TicketRepository>();

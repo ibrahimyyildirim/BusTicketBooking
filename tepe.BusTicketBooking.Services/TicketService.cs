@@ -14,20 +14,26 @@ namespace tepe.BusTicketBooking.Services
     {
         private readonly ITicketRepository _ticketRepository;
         private readonly IInvoiceRepository _invoiceRepository;
-        public TicketService(ITicketRepository ticketRepository, IInvoiceRepository invoiceRepository) {
+        private readonly IUserRepository _userRepository;
+        public TicketService(ITicketRepository ticketRepository, IInvoiceRepository invoiceRepository, IUserRepository userRepository ) {
             _ticketRepository = ticketRepository;
             _invoiceRepository = invoiceRepository;
+            _userRepository = userRepository;
         }
 
         public Task<TicketDTO> SellTicket(SellTicketRequestModel req)
         {
             // TODO: Https Context ile tokenden user'ı bulma
             // İsteği atan user'ı ve ticket'ı bul (repo)
+            var user = _userRepository.getUser(req.UserId);
+            var ticket = _ticketRepository.getTicket(req.TicketId);
             // Var mı ve satılmaya uygun mu kontrolleri yapılacak
             // satış yap, ticketi update et. (fiyat artış kuralı çalışacak)
             // incoive kes, (invoice reposuna ihtiyaç olacak)
             // response'u maple
             throw new NotImplementedException();
         }
+
+
     }
 }

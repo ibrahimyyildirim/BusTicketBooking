@@ -8,17 +8,20 @@ using tepe.BusTicketBooking.Core.Interfaces.Repositories;
 
 namespace tepe.BusTicketBooking.DAL.Repositories
 {
-    public class TicketRepository : EntityFrameworkRepository<Ticket,TepeContext>, ITicketRepository
+    public class UserRepository :  IUserRepository
     {
         private readonly TepeContext _contextdb;
-        public TicketRepository(TepeContext context) : base(context)
+        public UserRepository(TepeContext context)
         {
             _contextdb = context;
         }
 
-        public Ticket getTicket(int ticketId)
-        {
-            return _contextdb.Tickets.Find(ticketId);
+        public User getUser(int id) {
+            return _contextdb.Users.Find(id);
+        }
+
+        public async Task<User> getUserAsync(int id) {
+            return await _contextdb.Users.FindAsync(id);
         }
     }
 }

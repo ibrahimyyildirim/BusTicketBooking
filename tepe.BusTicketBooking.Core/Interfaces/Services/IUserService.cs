@@ -5,10 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using tepe.BusTicketBooking.Core.Entities;
 
-namespace tepe.BusTicketBooking.Core.Interfaces.Repositories
+namespace tepe.BusTicketBooking.Core.Interfaces.Services
 {
-    public interface ITicketRepository : IRepository<Ticket>
+    public interface IUserService : IService
     {
-        Ticket getTicket(int ticketId);
     }
 }

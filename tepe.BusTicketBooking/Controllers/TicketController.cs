@@ -6,6 +6,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using tepe.BusTicketBooking.Core.Interfaces.Services;
+using tepe.BusTicketBooking.Core.RequestModels;
+using tepe.BusTicketBooking.Core.ResponseModels;
 
 namespace tepe.BusTicketBooking.Controllers
 {
@@ -19,5 +21,19 @@ namespace tepe.BusTicketBooking.Controllers
         {
             _ticketService = ticketService;
         }
+
+        [AllowAnonymous]
+        [HttpPost("SellTicket")]
+        public async Task<GetTicketResponseModel> GetTickets(SellTicketRequestModel sellTicketRequest)
+        {
+            var items = await _ticketService.SellTicket(sellTicketRequest);
+            return new GetTicketResponseModel
+            {
+
+            };
+        }
+
     }
+
+
 }

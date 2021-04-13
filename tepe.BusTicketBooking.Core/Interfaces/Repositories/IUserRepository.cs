@@ -7,8 +7,9 @@ using tepe.BusTicketBooking.Core.Entities;
 
 namespace tepe.BusTicketBooking.Core.Interfaces.Repositories
 {
-    public interface ITicketRepository : IRepository<Ticket>
+    public interface IUserRepository 
     {
-        Ticket getTicket(int ticketId);
+        User getUser(int id);
+
     }
 }
